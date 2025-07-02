@@ -1,0 +1,43 @@
+﻿using System;
+using System.IO;
+using System.Windows.Forms;
+using DotSpatial.Controls;
+using DotSpatial.Data;
+using Core;
+
+namespace Modules.Shapefile
+{
+    /// <summary>
+    /// 保存当前选中的折线 Shapefile（Polyline）
+    /// </summary>
+    public class SavePolylineShpModule : IRunnableModule
+    {
+        public string Name => "Save";
+        public string Category => "Shapefile/Polyline";
+
+        public void Run()
+        {
+            var map = MapContext.Instance.MainMap;
+            var layer = map.Layers.SelectedLayer as IMapFeatureLayer;
+            if (layer == null)
+            {
+                MessageBox.Show("请先在左侧图层管理中选择一个要素图层！");
+                return;
+            }
+            string orig = (layer.DataSet as IFeatureSet)?.Filename;
+            string defaultName = !string.IsNullOrEmpty(orig)
+                                 ? Path.GetFileName(orig)
+                                 : "new_polyline.shp";
+            using (var sfd = new SaveFileDialog
+            {
+                Filter = "Shapefile|*.shp",
+                FileName = defaultName
+            })
+            {
+                if (sfd.ShowDialog() != DialogResult.OK) return;
+                layer.DataSet.SaveAs(sfd.FileName, true);
+                MessageBox.Show("已保存至：" + sfd.FileName);
+            }
+        }
+    }
+}

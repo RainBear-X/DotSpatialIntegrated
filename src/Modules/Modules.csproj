@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{03E4BAE0-13E7-4F6D-A2B1-2802A99F8EE6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Modules</RootNamespace>
+    <AssemblyName>Modules</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotSpatial.Controls">
+      <HintPath>..\..\..\4\DotSpatial_Full.1.7\DotSpatial.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Data">
+      <HintPath>..\..\..\4\DotSpatial_Full.1.7\DotSpatial.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Data.Forms">
+      <HintPath>..\..\..\4\DotSpatial_Full.1.7\DotSpatial.Data.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Data.Rasters.GdalExtension">
+      <HintPath>..\..\..\4\DotSpatial_Full.1.7\Windows Extensions\DotSpatial.Data.Rasters.GdalExtension\DotSpatial.Data.Rasters.GdalExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Positioning.Forms">
+      <HintPath>..\..\..\4\DotSpatial_Full.1.7\DotSpatial.Positioning.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Projections">
+      <HintPath>..\..\..\4\DotSpatial_Full.1.7\DotSpatial.Projections.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Projections.Forms, Version=1.7.0.0, Culture=neutral, PublicKeyToken=52099474f11b7ff0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\4\DotSpatial_Full.1.7\DotSpatial.Projections.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Serialization">
+      <HintPath>..\..\..\4\DotSpatial_Full.1.7\DotSpatial.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Symbology">
+      <HintPath>..\..\..\4\DotSpatial_Full.1.7\DotSpatial.Symbology.dll</HintPath>
+    </Reference>
+    <Reference Include="DotSpatial.Topology">
+      <HintPath>..\..\..\4\DotSpatial_Full.1.7\DotSpatial.Topology.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlusFree, Version=4.5.3.8, Culture=neutral, PublicKeyToken=85bfa0499e2db48a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPPlusFree.4.5.3.8\lib\net40\EPPlusFree.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ZedGraph.5.1.5\lib\ZedGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="ZedGraph.Web, Version=5.1.5.29221, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ZedGraph.Web.5.1.5\lib\ZedGraph.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analysis\HikingPathForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analysis\HikingPathForm.Designer.cs">
+      <DependentUpon>HikingPathForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Analysis\HikingGraphForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analysis\HikingGraphForm.Designer.cs">
+      <DependentUpon>HikingGraphForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Analysis\HikingPathModule.cs" />
+    <Compile Include="Attribute\AddColumnModule.cs" />
+    <Compile Include="Attribute\AttributeFilterHighlightModule.cs" />
+    <Compile Include="Attribute\AttributeLabelModule.cs" />
+    <Compile Include="Attribute\AttributeQueryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\AttributeQueryDialog.Designer.cs">
+      <DependentUpon>AttributeQueryDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\AttributeTableSync.cs" />
+    <Compile Include="Attribute\DeleteColumnModule.cs" />
+    <Compile Include="Attribute\ExportAttributeModule.cs" />
+    <Compile Include="Attribute\FieldSelectDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\FieldSelectDialog.Designer.cs">
+      <DependentUpon>FieldSelectDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\SaveAttributeModule.cs" />
+    <Compile Include="Attribute\UniqueValueRendererModule.cs" />
+    <Compile Include="Attribute\ViewAttributeTableModule.cs" />
+    <Compile Include="IRunnableModule.cs" />
+    <Compile Include="MapBasics\ClearLayersModule.cs" />
+    <Compile Include="MapBasics\InfoModule.cs" />
+    <Compile Include="MapBasics\LoadShapefileModule.cs" />
+    <Compile Include="MapBasics\PanModule.cs" />
+    <Compile Include="MapBasics\SelectModule.cs" />
+    <Compile Include="MapBasics\ZoomFullExtentModule.cs" />
+    <Compile Include="MapBasics\ZoomInModule.cs" />
+    <Compile Include="MapBasics\ZoomOutModule.cs" />
+    <Compile Include="Printing\PrintLayoutModule.cs" />
+    <Compile Include="Projection\ProjectionExplorerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projection\ProjectionExplorerForm.Designer.cs">
+      <DependentUpon>ProjectionExplorerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projection\CalcAreaModule.cs" />
+    <Compile Include="Projection\ProjectionCompareModule.cs" />
+    <Compile Include="Projection\ProjectionExplorerModule.cs" />
+    <Compile Include="Projection\ReprojectLayerModule.cs" />
+    <Compile Include="Projection\ShowCurrentProjModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RasterOps\HillshadeModule.cs" />
+    <Compile Include="RasterOps\LoadRasterModule.cs" />
+    <Compile Include="RasterOps\MultiplyRasterModule.cs" />
+    <Compile Include="RasterOps\RasterValueAtClickModule.cs" />
+    <Compile Include="RasterOps\ReclassifyRasterModule.cs" />
+    <Compile Include="Shapefile\CreatePointShpModule.cs" />
+    <Compile Include="Shapefile\CreatePolygonShpModule.cs" />
+    <Compile Include="Shapefile\CreatePolylineShpModule.cs" />
+    <Compile Include="Shapefile\SavePointShpModule.cs" />
+    <Compile Include="Shapefile\SavePolygonShpModule.cs" />
+    <Compile Include="Shapefile\SavePolylineShpModule.cs" />
+    <Compile Include="SymbologyAttr\ShapeModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{78aeb53b-9a47-40fd-9f99-c02e1e4ba412}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Analysis\HikingPathForm.resx">
+      <DependentUpon>HikingPathForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Analysis\HikingGraphForm.resx">
+      <DependentUpon>HikingGraphForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\AttributeQueryDialog.resx">
+      <DependentUpon>AttributeQueryDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\FieldSelectDialog.resx">
+      <DependentUpon>FieldSelectDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projection\ProjectionExplorerForm.resx">
+      <DependentUpon>ProjectionExplorerForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
