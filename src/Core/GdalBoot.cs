@@ -15,7 +15,15 @@ namespace Core
 
             // 设置正确的 GDAL DLL 路径
             var baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            var gdalPath = Path.Combine(baseDir, "Data Extensions", "gdal", "x86");
+            var arch = Environment.Is64BitProcess ? "x64" : "x86";
+            var gdalPath = Path.Combine(baseDir, "Data Extensions", "gdal", arch);
+            if (!Directory.Exists(gdalPath))
+            {
+                // 允许从配置或环境变量获取备用目录
+                gdalPath = Environment.GetEnvironmentVariable("GDAL_HOME") ?? gdalPath;
+            }
+            if (!Directory.Exists(gdalPath))
+                throw new DirectoryNotFoundException($"GDAL 目录未找到：{gdalPath}");
 
             if (Directory.Exists(gdalPath))
             {

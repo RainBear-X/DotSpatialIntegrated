@@ -6,7 +6,7 @@ namespace Modules.MapBasics
 {
     public class LoadLayerModule : IRunnableModule
     {
-        public string Name { get { return "加载图层"; } }
+        public string Name { get { return "加载矢量"; } }
         public string Category { get { return "File"; } }
 
         public void Run()

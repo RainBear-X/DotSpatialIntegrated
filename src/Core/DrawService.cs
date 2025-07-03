@@ -90,6 +90,7 @@ namespace Core
         {
             if (CurrentMode == DrawMode.None) return;
             var map = MapContext.Instance.MainMap;
+            if (map == null) return;             // 新增：确保地图已存在
             map.MouseDown -= Map_MouseDown;
             map.MouseUp -= Map_MouseUp;
             map.MouseMove -= Map_MouseMove;
