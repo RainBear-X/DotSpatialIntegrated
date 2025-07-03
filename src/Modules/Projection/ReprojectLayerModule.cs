@@ -15,6 +15,7 @@ namespace Modules.Projection
         public void Run()
         {
             var map = MapContext.Instance.MainMap;
+            if (map == null) return;
             var lyr = map.Layers.SelectedLayer as IMapFeatureLayer;
             if (lyr == null)
             {
@@ -26,10 +27,18 @@ namespace Modules.Projection
                 if (dlg.ShowDialog() != DialogResult.OK) return;
                 var target = dlg.SelectedCoordinateSystem;
                 FeatureSet newFs = ProjectionService.ReprojectCopy(lyr.DataSet, target);
+                string dir = Path.GetDirectoryName(lyr.DataSet.Filename);
                 string baseName = Path.GetFileNameWithoutExtension(lyr.DataSet.Filename);
-                newFs.Filename = baseName + "_" + target.Name.Replace(' ', '_') + ".shp";
-                var newLayer = map.Layers.Add(newFs);
-                map.Layers.SelectedLayer = newLayer;
+                string newPath = Path.Combine(dir,
+                    baseName + "_" + target.Name.Replace(' ', '_') + ".shp");
+                newFs.SaveAs(newPath, true);
+
+                IMapFeatureLayer added = map.AddLayer(newPath) as IMapFeatureLayer;
+                if (added != null)
+                {
+                    map.Layers.SelectedLayer = added;
+                    map.Legend?.RefreshNodes();
+                }
             }
         }
     }

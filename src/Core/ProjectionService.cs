@@ -47,7 +47,7 @@ namespace Core
 
             // 4. 对新 FeatureSet 应用目标投影
             fs.Reproject(target);
-
+            fs.Projection = target;
             return fs;
         }
 
